@@ -59,7 +59,7 @@ return ((x__4219__auto__ > y__4220__auto__) ? x__4219__auto__ : y__4220__auto__)
 })();
 return cljs.core.map.cljs$core$IFn$_invoke$arity$2(((function (speed){
 return (function (enemy){
-return new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$x,cljs.core.cst$kw$x.cljs$core$IFn$_invoke$arity$1(enemy),cljs.core.cst$kw$y,(cljs.core.cst$kw$y.cljs$core$IFn$_invoke$arity$1(enemy) + speed)], null);
+return new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$x,cljs.core.cst$kw$x.cljs$core$IFn$_invoke$arity$1(enemy),cljs.core.cst$kw$y,(cljs.core.cst$kw$y.cljs$core$IFn$_invoke$arity$1(enemy) + (cljs.core.cst$kw$speed_DASH_mul.cljs$core$IFn$_invoke$arity$1(enemy) * speed)),cljs.core.cst$kw$speed_DASH_mul,cljs.core.cst$kw$speed_DASH_mul.cljs$core$IFn$_invoke$arity$1(enemy)], null);
 });})(speed))
 ,cljs.core.cst$kw$enemies.cljs$core$IFn$_invoke$arity$1(state));
 });
