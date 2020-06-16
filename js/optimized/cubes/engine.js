@@ -36,10 +36,7 @@ cubes.engine.update_point_cube_pos = (function cubes$engine$update_point_cube_po
 var player_x = cljs.core.cst$kw$x.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$player.cljs$core$IFn$_invoke$arity$1(state));
 var player_y = cljs.core.cst$kw$y.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$player.cljs$core$IFn$_invoke$arity$1(state));
 var point_cubes = cljs.core.cst$kw$point_DASH_cubes.cljs$core$IFn$_invoke$arity$1(state);
-var speed = (function (){var x__4219__auto__ = cljs.core.cst$kw$speed.cljs$core$IFn$_invoke$arity$1(state);
-var y__4220__auto__ = (- cljs.core.cst$kw$speed.cljs$core$IFn$_invoke$arity$1(state));
-return ((x__4219__auto__ > y__4220__auto__) ? x__4219__auto__ : y__4220__auto__);
-})();
+var speed = cljs.core.cst$kw$speed.cljs$core$IFn$_invoke$arity$1(state);
 return cljs.core.map.cljs$core$IFn$_invoke$arity$2(((function (player_x,player_y,point_cubes,speed){
 return (function (point){
 return new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$x,cljs.core.cst$kw$x.cljs$core$IFn$_invoke$arity$1(point),cljs.core.cst$kw$y,(cljs.core.cst$kw$y.cljs$core$IFn$_invoke$arity$1(point) + speed)], null);
@@ -53,10 +50,7 @@ return (!((((player_y >= (point_y - (20)))) && (((player_y - (20)) <= point_y)) 
 ,point_cubes));
 });
 cubes.engine.update_enemy_pos = (function cubes$engine$update_enemy_pos(state){
-var speed = (function (){var x__4219__auto__ = cljs.core.cst$kw$speed.cljs$core$IFn$_invoke$arity$1(state);
-var y__4220__auto__ = (- cljs.core.cst$kw$speed.cljs$core$IFn$_invoke$arity$1(state));
-return ((x__4219__auto__ > y__4220__auto__) ? x__4219__auto__ : y__4220__auto__);
-})();
+var speed = cljs.core.cst$kw$speed.cljs$core$IFn$_invoke$arity$1(state);
 return cljs.core.map.cljs$core$IFn$_invoke$arity$2(((function (speed){
 return (function (enemy){
 return new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$x,cljs.core.cst$kw$x.cljs$core$IFn$_invoke$arity$1(enemy),cljs.core.cst$kw$y,(cljs.core.cst$kw$y.cljs$core$IFn$_invoke$arity$1(enemy) + (cljs.core.cst$kw$speed_DASH_mul.cljs$core$IFn$_invoke$arity$1(enemy) * speed)),cljs.core.cst$kw$speed_DASH_mul,cljs.core.cst$kw$speed_DASH_mul.cljs$core$IFn$_invoke$arity$1(enemy)], null);
