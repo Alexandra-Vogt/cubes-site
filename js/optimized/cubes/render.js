@@ -63,12 +63,12 @@ quil.core.text_font.cljs$core$IFn$_invoke$arity$1("Courier New");
 
 quil.core.fill.cljs$core$IFn$_invoke$arity$3((255),(255),(0));
 
-return quil.core.text.cljs$core$IFn$_invoke$arity$3(["SCORE: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$score.cljs$core$IFn$_invoke$arity$1(state)),"\n","FRAME: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$time.cljs$core$IFn$_invoke$arity$1(state)),"\n","SPEED: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$speed.cljs$core$IFn$_invoke$arity$1(state)),"\n"].join(''),(10),(20));
+return quil.core.text.cljs$core$IFn$_invoke$arity$3(["SCORE: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$score.cljs$core$IFn$_invoke$arity$1(state)),"\n","FRAME: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$time.cljs$core$IFn$_invoke$arity$1(state)),"\n","SPEED: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$speed.cljs$core$IFn$_invoke$arity$1(state).toFixed((1))),"\n"].join(''),(10),(20));
 });
 cubes.render.render_score = (function cubes$render$render_score(state){
 quil.core.fill.cljs$core$IFn$_invoke$arity$3((255),(255),(0));
 
-return quil.core.text.cljs$core$IFn$_invoke$arity$3(["YOU LOOSE\n","FRAMES: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$time.cljs$core$IFn$_invoke$arity$1(state)),"\n","MAX SCORE: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$max_DASH_score.cljs$core$IFn$_invoke$arity$1(state)),"\n","SCORE:     ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$score.cljs$core$IFn$_invoke$arity$1(state)),"\n","\n","PRESS ANY KEY TO CONTINUE...",((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2((cljs.core.mod(quil.core.seconds(),(2)) | (0)),(0)))?"\u2588":"")].join(''),(10),(20));
+return quil.core.text.cljs$core$IFn$_invoke$arity$3(["GAME OVER\n","FRAMES:    ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$time.cljs$core$IFn$_invoke$arity$1(state)),"\n","DISTANCE:  ",cljs.core.str.cljs$core$IFn$_invoke$arity$1((cljs.core.cst$kw$distance.cljs$core$IFn$_invoke$arity$1(state) | (0))),"\n","MAX SCORE: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$max_DASH_score.cljs$core$IFn$_invoke$arity$1(state)),"\n","SCORE:     ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$score.cljs$core$IFn$_invoke$arity$1(state)),"\n","\n","PRESS ANY KEY TO CONTINUE...",((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2((cljs.core.mod(quil.core.seconds(),(2)) | (0)),(0)))?"\u2588":"")].join(''),(10),(20));
 });
 cubes.render.render_state = (function cubes$render$render_state(state){
 quil.core.background.cljs$core$IFn$_invoke$arity$1((0));

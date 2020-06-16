@@ -39,7 +39,7 @@ var point_cubes = cljs.core.cst$kw$point_DASH_cubes.cljs$core$IFn$_invoke$arity$
 var speed = cljs.core.cst$kw$speed.cljs$core$IFn$_invoke$arity$1(state);
 return cljs.core.map.cljs$core$IFn$_invoke$arity$2(((function (player_x,player_y,point_cubes,speed){
 return (function (point){
-return new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$x,cljs.core.cst$kw$x.cljs$core$IFn$_invoke$arity$1(point),cljs.core.cst$kw$y,(cljs.core.cst$kw$y.cljs$core$IFn$_invoke$arity$1(point) + speed)], null);
+return new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$x,cljs.core.cst$kw$x.cljs$core$IFn$_invoke$arity$1(point),cljs.core.cst$kw$y,(cljs.core.cst$kw$y.cljs$core$IFn$_invoke$arity$1(point) + (cljs.core.cst$kw$speed_DASH_mul.cljs$core$IFn$_invoke$arity$1(point) * speed)),cljs.core.cst$kw$speed_DASH_mul,cljs.core.cst$kw$speed_DASH_mul.cljs$core$IFn$_invoke$arity$1(point)], null);
 });})(player_x,player_y,point_cubes,speed))
 ,cljs.core.filter.cljs$core$IFn$_invoke$arity$2(((function (player_x,player_y,point_cubes,speed){
 return (function (point){
