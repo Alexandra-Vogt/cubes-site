@@ -35,7 +35,7 @@ return quil.core.key_pressed_QMARK_();
 return and__4120__auto__;
 }
 })())){
-return 0.5;
+return (1);
 } else {
 if(cljs.core.truth_((function (){var and__4120__auto__ = cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(quil.core.key_as_keyword(),cljs.core.cst$kw$ArrowDown);
 if(and__4120__auto__){
@@ -44,7 +44,7 @@ return quil.core.key_pressed_QMARK_();
 return and__4120__auto__;
 }
 })())){
-return -0.5;
+return (-1);
 } else {
 return (0);
 
