@@ -37,29 +37,38 @@ return (((player_y >= (enemy_y - (20)))) && (((player_y - (20)) <= enemy_y)) && 
 }
 });
 /**
+ * Filters out out of bounds entities.
+ */
+cubes.engine.gc_entities = (function cubes$engine$gc_entities(min_y,entities){
+return cljs.core.filter.cljs$core$IFn$_invoke$arity$2((function (ent){
+var ent_y = cljs.core.cst$kw$y.cljs$core$IFn$_invoke$arity$1(ent);
+return ((min_y + (30)) >= ent_y);
+}),entities);
+});
+/**
  * Updates the position of the point cubes.
  */
-cubes.engine.update_point_cube_pos = (function cubes$engine$update_point_cube_pos(player_x,player_y,point_cubes,speed){
+cubes.engine.update_point_cube_pos = (function cubes$engine$update_point_cube_pos(player_x,player_y,min_y,point_cubes,speed){
 return cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (point){
 return new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$x,cljs.core.cst$kw$x.cljs$core$IFn$_invoke$arity$1(point),cljs.core.cst$kw$y,(cljs.core.cst$kw$y.cljs$core$IFn$_invoke$arity$1(point) + (cljs.core.cst$kw$speed_DASH_mul.cljs$core$IFn$_invoke$arity$1(point) * speed)),cljs.core.cst$kw$speed_DASH_mul,cljs.core.cst$kw$speed_DASH_mul.cljs$core$IFn$_invoke$arity$1(point)], null);
-}),cljs.core.filter.cljs$core$IFn$_invoke$arity$2((function (point){
+}),cubes.engine.gc_entities(min_y,cljs.core.filter.cljs$core$IFn$_invoke$arity$2((function (point){
 var point_x = cljs.core.cst$kw$x.cljs$core$IFn$_invoke$arity$1(point);
 var point_y = cljs.core.cst$kw$y.cljs$core$IFn$_invoke$arity$1(point);
 return (!((((player_y >= (point_y - (20)))) && (((player_y - (20)) <= point_y)) && ((player_x >= (point_x - (20)))) && (((player_x - (20)) <= point_x)))));
-}),point_cubes));
+}),point_cubes)));
 });
 /**
  * Updates the positions of each enemy.
  */
-cubes.engine.update_enemy_pos = (function cubes$engine$update_enemy_pos(enemies,speed){
+cubes.engine.update_enemy_pos = (function cubes$engine$update_enemy_pos(min_y,enemies,speed){
 return cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (enemy){
 return new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$x,cljs.core.cst$kw$x.cljs$core$IFn$_invoke$arity$1(enemy),cljs.core.cst$kw$y,(cljs.core.cst$kw$y.cljs$core$IFn$_invoke$arity$1(enemy) + (cljs.core.cst$kw$speed_DASH_mul.cljs$core$IFn$_invoke$arity$1(enemy) * speed)),cljs.core.cst$kw$speed_DASH_mul,cljs.core.cst$kw$speed_DASH_mul.cljs$core$IFn$_invoke$arity$1(enemy)], null);
-}),enemies);
+}),cubes.engine.gc_entities(min_y,enemies));
 });
 /**
  * Generates enemies and updates their positions.
  */
-cubes.engine.gen_enemies = (function cubes$engine$gen_enemies(min_x,max_x,max_y,time,speed,enemies){
+cubes.engine.gen_enemies = (function cubes$engine$gen_enemies(min_x,max_x,min_y,max_y,time,speed,enemies){
 var spawn_freq = ((60) / (((((10) + time) / (500)) + (1)) * (quil.core.width() / (700))));
 if(((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2((0),cljs.core.mod(time,(function (){var x__4219__auto__ = (1);
 var y__4220__auto__ = (spawn_freq | (0));
@@ -68,16 +77,16 @@ return ((x__4219__auto__ > y__4220__auto__) ? x__4219__auto__ : y__4220__auto__)
 var y__4220__auto__ = (- speed);
 return ((x__4219__auto__ > y__4220__auto__) ? x__4219__auto__ : y__4220__auto__);
 })())) && (((100) < time)))){
-return cljs.core.concat.cljs$core$IFn$_invoke$arity$2(cubes.engine.update_enemy_pos(enemies,speed),cljs.core.map.cljs$core$IFn$_invoke$arity$2(((function (spawn_freq){
+return cljs.core.concat.cljs$core$IFn$_invoke$arity$2(cubes.engine.update_enemy_pos(min_y,enemies,speed),cljs.core.map.cljs$core$IFn$_invoke$arity$2(((function (spawn_freq){
 return (function (){
-return new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$x,quil.core.random.cljs$core$IFn$_invoke$arity$2(min_x,max_x),cljs.core.cst$kw$y,(max_y - (10)),cljs.core.cst$kw$speed_DASH_mul,quil.core.random.cljs$core$IFn$_invoke$arity$2(1.5,0.5)], null);
+return new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$x,quil.core.random.cljs$core$IFn$_invoke$arity$2(min_x,max_x),cljs.core.cst$kw$y,(max_y - (20)),cljs.core.cst$kw$speed_DASH_mul,quil.core.random.cljs$core$IFn$_invoke$arity$2(1.5,0.5)], null);
 });})(spawn_freq))
 ,cljs.core.repeat.cljs$core$IFn$_invoke$arity$2((function (){var x__4219__auto__ = (1);
 var y__4220__auto__ = (((1) / spawn_freq) | (0));
 return ((x__4219__auto__ > y__4220__auto__) ? x__4219__auto__ : y__4220__auto__);
 })(),(1))));
 } else {
-return cubes.engine.update_enemy_pos(enemies,speed);
+return cubes.engine.update_enemy_pos(min_y,enemies,speed);
 }
 });
 /**
@@ -99,14 +108,14 @@ return (acc + (0));
  *   the spawn frequency calculation computes the frequency with which
  *   enemies will spawn.
  */
-cubes.engine.gen_point_cubes = (function cubes$engine$gen_point_cubes(player_x,player_y,min_x,max_x,max_y,point_cubes,speed,time){
+cubes.engine.gen_point_cubes = (function cubes$engine$gen_point_cubes(player_x,player_y,min_x,max_x,min_y,max_y,point_cubes,speed,time){
 if(((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2((0),cljs.core.mod(time,(((128) / (quil.core.width() / (700))) | (0))))) && ((0.4 < (function (){var x__4219__auto__ = speed;
 var y__4220__auto__ = (- speed);
 return ((x__4219__auto__ > y__4220__auto__) ? x__4219__auto__ : y__4220__auto__);
 })())))){
-return cljs.core.conj.cljs$core$IFn$_invoke$arity$2(cubes.engine.update_point_cube_pos(player_x,player_y,point_cubes,speed),new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$x,quil.core.random.cljs$core$IFn$_invoke$arity$2(min_x,max_x),cljs.core.cst$kw$y,(max_y - (10)),cljs.core.cst$kw$speed_DASH_mul,quil.core.random.cljs$core$IFn$_invoke$arity$2(1.5,0.5)], null));
+return cljs.core.conj.cljs$core$IFn$_invoke$arity$2(cubes.engine.update_point_cube_pos(player_x,player_y,min_y,point_cubes,speed),new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$x,quil.core.random.cljs$core$IFn$_invoke$arity$2(min_x,max_x),cljs.core.cst$kw$y,(max_y - (20)),cljs.core.cst$kw$speed_DASH_mul,quil.core.random.cljs$core$IFn$_invoke$arity$2(1.5,0.5)], null));
 } else {
-return cubes.engine.update_point_cube_pos(player_x,player_y,point_cubes,speed);
+return cubes.engine.update_point_cube_pos(player_x,player_y,min_y,point_cubes,speed);
 }
 });
 /**
