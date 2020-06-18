@@ -53,41 +53,12 @@ return cubes.render.render_enemy(cljs.core.cst$kw$x.cljs$core$IFn$_invoke$arity$
 return cubes.render.render_player(cljs.core.cst$kw$x.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$player.cljs$core$IFn$_invoke$arity$1(state)),cljs.core.cst$kw$y.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$player.cljs$core$IFn$_invoke$arity$1(state)));
 }finally {quil.core.pop_matrix();
 }});
-cubes.render.render_title = (function cubes$render$render_title(){
-quil.core.fill.cljs$core$IFn$_invoke$arity$3((255),(255),(0));
-
-return quil.core.text.cljs$core$IFn$_invoke$arity$3(["CONTROLS:\n","THE ARROW KEYS CONTROL ACCELERATION ACCELERATION\n","THE CUBES MOVE AT THE OUTPUT OF A FUNCTION OF YOUR SPEED\n","\n","RULES:\n","HITTING RED SQUARES ENDS THE GAME\n","HITTING BLUE SQUARES INCREMENTS THE SCORE COUNTER\n","THE LONGER YOU PLAY THE MORE FREQUENTLY RED CUBES SPAWN\n","\n","GOOD LUCK!\n","PRESS ANY KEY TO CONTINUE...",((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2((cljs.core.mod(quil.core.seconds(),(2)) | (0)),(0)))?"\u2588":"")].join(''),(10),(20));
-});
-cubes.render.render_game = (function cubes$render$render_game(state){
-quil.core.text_font.cljs$core$IFn$_invoke$arity$1("Courier New");
-
-quil.core.fill.cljs$core$IFn$_invoke$arity$3((255),(255),(0));
-
-return quil.core.text.cljs$core$IFn$_invoke$arity$3(["SCORE: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$score.cljs$core$IFn$_invoke$arity$1(state)),"\n","FRAME: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$time.cljs$core$IFn$_invoke$arity$1(state)),"\n","SPEED: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$speed.cljs$core$IFn$_invoke$arity$1(state).toFixed((1))),"\n"].join(''),(10),(20));
-});
-cubes.render.render_score = (function cubes$render$render_score(state){
-quil.core.fill.cljs$core$IFn$_invoke$arity$3((255),(255),(0));
-
-return quil.core.text.cljs$core$IFn$_invoke$arity$3(["GAME OVER\n","FRAMES:    ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$time.cljs$core$IFn$_invoke$arity$1(state)),"\n","DISTANCE:  ",cljs.core.str.cljs$core$IFn$_invoke$arity$1((cljs.core.cst$kw$distance.cljs$core$IFn$_invoke$arity$1(state) | (0))),"\n","MAX SCORE: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$max_DASH_score.cljs$core$IFn$_invoke$arity$1(state)),"\n","SCORE:     ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$score.cljs$core$IFn$_invoke$arity$1(state)),((((60) < cljs.core.cst$kw$screen_DASH_time.cljs$core$IFn$_invoke$arity$1(state)))?"\n\nPRESS ANY KEY TO CONTINUE...":null),((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2((cljs.core.mod(quil.core.seconds(),(2)) | (0)),(0)))?"\u2588":"")].join(''),(10),(20));
-});
 cubes.render.render_state = (function cubes$render$render_state(state){
 quil.core.background.cljs$core$IFn$_invoke$arity$1((0));
 
 cubes.render.render_entities(state);
 
-var pred__6543 = cljs.core._EQ_;
-var expr__6544 = cljs.core.cst$kw$stage.cljs$core$IFn$_invoke$arity$1(state);
-if(cljs.core.truth_((pred__6543.cljs$core$IFn$_invoke$arity$2 ? pred__6543.cljs$core$IFn$_invoke$arity$2("title",expr__6544) : pred__6543.call(null,"title",expr__6544)))){
-return cubes.render.render_title();
-} else {
-if(cljs.core.truth_((pred__6543.cljs$core$IFn$_invoke$arity$2 ? pred__6543.cljs$core$IFn$_invoke$arity$2("game",expr__6544) : pred__6543.call(null,"game",expr__6544)))){
-return cubes.render.render_game(state);
-} else {
-if(cljs.core.truth_((pred__6543.cljs$core$IFn$_invoke$arity$2 ? pred__6543.cljs$core$IFn$_invoke$arity$2("score",expr__6544) : pred__6543.call(null,"score",expr__6544)))){
-return cubes.render.render_score(state);
-} else {
-throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(expr__6544)].join('')));
-}
-}
-}
+quil.core.fill.cljs$core$IFn$_invoke$arity$3((255),(255),(0));
+
+return quil.core.text.cljs$core$IFn$_invoke$arity$3([cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$text.cljs$core$IFn$_invoke$arity$1(state)),((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2((cljs.core.mod(quil.core.seconds(),(2)) | (0)),(0)))?"\u2588":"")].join(''),(10),(20));
 });

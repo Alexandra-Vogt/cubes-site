@@ -9,7 +9,7 @@ goog.require('cubes.stages');
 cubes.core.setup = (function cubes$core$setup(){
 quil.core.frame_rate((30));
 
-return new cljs.core.PersistentArrayMap(null, 7, [cljs.core.cst$kw$speed,(0),cljs.core.cst$kw$time,(0),cljs.core.cst$kw$score,(0),cljs.core.cst$kw$player,new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$x,(-20),cljs.core.cst$kw$y,(200)], null),cljs.core.cst$kw$enemies,cljs.core.PersistentVector.EMPTY,cljs.core.cst$kw$point_DASH_cubes,cljs.core.PersistentVector.EMPTY,cljs.core.cst$kw$stage,"title"], null);
+return cljs.core.PersistentHashMap.fromArrays([cljs.core.cst$kw$stage,cljs.core.cst$kw$speed,cljs.core.cst$kw$max_DASH_score,cljs.core.cst$kw$time,cljs.core.cst$kw$score,cljs.core.cst$kw$player,cljs.core.cst$kw$point_DASH_cubes,cljs.core.cst$kw$distance,cljs.core.cst$kw$enemies,cljs.core.cst$kw$text],["title",(0),(0),(0),(0),new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$x,(-20),cljs.core.cst$kw$y,(20)], null),cljs.core.PersistentVector.EMPTY,(0),cljs.core.PersistentVector.EMPTY,["CONTROLS:\n","THE ARROW KEYS CONTROL ACCELERATION ACCELERATION\n","THE CUBES MOVE AT THE OUTPUT OF A FUNCTION OF YOUR SPEED\n","\n","RULES:\n","HITTING RED SQUARES ENDS THE GAME\n","HITTING BLUE SQUARES INCREMENTS THE SCORE COUNTER\n","THE LONGER YOU PLAY THE MORE FREQUENTLY RED CUBES SPAWN\n","\n","GOOD LUCK!\n","PRESS ANY KEY TO CONTINUE..."].join('')]);
 });
 cubes.core.run_sketch = (function cubes$core$run_sketch(){
 var width = (window.innerWidth - (15));
@@ -18,8 +18,30 @@ cubes.core.cubes = ((function (width,height){
 return (function cubes$core$run_sketch_$_cubes(){
 return quil.sketch.sketch.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([cljs.core.cst$kw$host,"cubes",cljs.core.cst$kw$update,((cljs.core.fn_QMARK_(cubes.stages.update_stage_state))?((function (width,height){
 return (function() { 
-var G__6648__delegate = function (args){
+var G__6645__delegate = function (args){
 return cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cubes.stages.update_stage_state,args);
+};
+var G__6645 = function (var_args){
+var args = null;
+if (arguments.length > 0) {
+var G__6646__i = 0, G__6646__a = new Array(arguments.length -  0);
+while (G__6646__i < G__6646__a.length) {G__6646__a[G__6646__i] = arguments[G__6646__i + 0]; ++G__6646__i;}
+  args = new cljs.core.IndexedSeq(G__6646__a,0,null);
+} 
+return G__6645__delegate.call(this,args);};
+G__6645.cljs$lang$maxFixedArity = 0;
+G__6645.cljs$lang$applyTo = (function (arglist__6647){
+var args = cljs.core.seq(arglist__6647);
+return G__6645__delegate(args);
+});
+G__6645.cljs$core$IFn$_invoke$arity$variadic = G__6645__delegate;
+return G__6645;
+})()
+;})(width,height))
+:cubes.stages.update_stage_state),cljs.core.cst$kw$size,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [width,height], null),cljs.core.cst$kw$setup,((cljs.core.fn_QMARK_(cubes.core.setup))?((function (width,height){
+return (function() { 
+var G__6648__delegate = function (args){
+return cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cubes.core.setup,args);
 };
 var G__6648 = function (var_args){
 var args = null;
@@ -38,10 +60,10 @@ G__6648.cljs$core$IFn$_invoke$arity$variadic = G__6648__delegate;
 return G__6648;
 })()
 ;})(width,height))
-:cubes.stages.update_stage_state),cljs.core.cst$kw$size,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [width,height], null),cljs.core.cst$kw$setup,((cljs.core.fn_QMARK_(cubes.core.setup))?((function (width,height){
+:cubes.core.setup),cljs.core.cst$kw$middleware,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [quil.middleware.fun_mode], null),cljs.core.cst$kw$draw,((cljs.core.fn_QMARK_(cubes.render.render_state))?((function (width,height){
 return (function() { 
 var G__6651__delegate = function (args){
-return cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cubes.core.setup,args);
+return cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cubes.render.render_state,args);
 };
 var G__6651 = function (var_args){
 var args = null;
@@ -58,28 +80,6 @@ return G__6651__delegate(args);
 });
 G__6651.cljs$core$IFn$_invoke$arity$variadic = G__6651__delegate;
 return G__6651;
-})()
-;})(width,height))
-:cubes.core.setup),cljs.core.cst$kw$middleware,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [quil.middleware.fun_mode], null),cljs.core.cst$kw$draw,((cljs.core.fn_QMARK_(cubes.render.render_state))?((function (width,height){
-return (function() { 
-var G__6654__delegate = function (args){
-return cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cubes.render.render_state,args);
-};
-var G__6654 = function (var_args){
-var args = null;
-if (arguments.length > 0) {
-var G__6655__i = 0, G__6655__a = new Array(arguments.length -  0);
-while (G__6655__i < G__6655__a.length) {G__6655__a[G__6655__i] = arguments[G__6655__i + 0]; ++G__6655__i;}
-  args = new cljs.core.IndexedSeq(G__6655__a,0,null);
-} 
-return G__6654__delegate.call(this,args);};
-G__6654.cljs$lang$maxFixedArity = 0;
-G__6654.cljs$lang$applyTo = (function (arglist__6656){
-var args = cljs.core.seq(arglist__6656);
-return G__6654__delegate(args);
-});
-G__6654.cljs$core$IFn$_invoke$arity$variadic = G__6654__delegate;
-return G__6654;
 })()
 ;})(width,height))
 :cubes.render.render_state)], 0));
