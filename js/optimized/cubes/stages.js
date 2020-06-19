@@ -18,19 +18,20 @@ cubes.stages.game_stage = (function cubes$stages$game_stage(state){
 return cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([state,(function (){var enemies = cljs.core.cst$kw$enemies.cljs$core$IFn$_invoke$arity$1(state);
 var player_x = cljs.core.cst$kw$x.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$player.cljs$core$IFn$_invoke$arity$1(state));
 var player_y = cljs.core.cst$kw$y.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$player.cljs$core$IFn$_invoke$arity$1(state));
-var min_x = ((quil.core.width() / (2)) - (20));
-var max_x = (- (quil.core.width() / (2)));
-var min_y = ((quil.core.height() / (2)) - (20));
-var max_y = (- (quil.core.height() / (2)));
+var player_speed_x = (cljs.core.cst$kw$speed_DASH_x.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$player.cljs$core$IFn$_invoke$arity$1(state)) + cubes.io.get_x_accel());
+var player_speed_y = (cljs.core.cst$kw$speed_DASH_y.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$player.cljs$core$IFn$_invoke$arity$1(state)) + cubes.io.get_y_accel());
+var player = cubes.engine.update_player(player_speed_x,player_speed_y,player_x,player_y);
+var min_x = (- (quil.core.width() / (2)));
+var max_x = ((quil.core.width() / (2)) - (20));
+var min_y = (- (quil.core.height() / (2)));
+var max_y = ((quil.core.height() / (2)) - (20));
 var time = cljs.core.cst$kw$time.cljs$core$IFn$_invoke$arity$1(state);
 var score = cljs.core.cst$kw$score.cljs$core$IFn$_invoke$arity$1(state);
 var point_cubes = cljs.core.cst$kw$point_DASH_cubes.cljs$core$IFn$_invoke$arity$1(state);
-var player_speed_x = (cljs.core.cst$kw$speed_DASH_x.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$player.cljs$core$IFn$_invoke$arity$1(state)) + cubes.io.get_input_x());
-var player_speed_y = (cljs.core.cst$kw$speed_DASH_y.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$player.cljs$core$IFn$_invoke$arity$1(state)) + cubes.io.get_input_y());
 var speed = quil.core.sqrt((quil.core.pow(player_speed_x,(2)) + quil.core.pow(player_speed_y,(2))));
 var distance = cljs.core.cst$kw$distance.cljs$core$IFn$_invoke$arity$1(state);
-if(cljs.core.not(cubes.engine.player_killed_QMARK_(player_x,player_y,min_x,max_x,min_y,max_y,enemies))){
-return cljs.core.PersistentHashMap.fromArrays([cljs.core.cst$kw$speed,cljs.core.cst$kw$max_DASH_score,cljs.core.cst$kw$time,cljs.core.cst$kw$score,cljs.core.cst$kw$player,cljs.core.cst$kw$point_DASH_cubes,cljs.core.cst$kw$distance,cljs.core.cst$kw$enemies,cljs.core.cst$kw$text],[speed,cljs.core.cst$kw$max_DASH_score.cljs$core$IFn$_invoke$arity$1(state),(time + (1)),cubes.engine.update_score(player_x,player_y,score,point_cubes),cubes.engine.update_player(player_speed_x,player_speed_y,player_x,player_y),cubes.engine.gen_point_cubes(player_x,player_y,min_x,max_x,min_y,max_y,point_cubes,speed,time),(distance + speed),cubes.engine.gen_enemies(min_x,max_x,min_y,max_y,time,speed,enemies),["SCORE: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$score.cljs$core$IFn$_invoke$arity$1(state)),"\n","FRAME: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$time.cljs$core$IFn$_invoke$arity$1(state)),"\n","SPEED: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$speed.cljs$core$IFn$_invoke$arity$1(state).toFixed((1)))].join('')]);
+if(cubes.engine.player_alive_QMARK_(player,min_x,max_x,min_y,max_y,enemies)){
+return cljs.core.PersistentHashMap.fromArrays([cljs.core.cst$kw$speed,cljs.core.cst$kw$max_DASH_score,cljs.core.cst$kw$time,cljs.core.cst$kw$score,cljs.core.cst$kw$player,cljs.core.cst$kw$point_DASH_cubes,cljs.core.cst$kw$distance,cljs.core.cst$kw$enemies,cljs.core.cst$kw$text],[speed,cljs.core.cst$kw$max_DASH_score.cljs$core$IFn$_invoke$arity$1(state),(time + (1)),cubes.engine.update_score(player,score,point_cubes),player,cubes.engine.gen_point_cubes(player,min_x,max_x,min_y,max_y,point_cubes,speed,time),(distance + speed),cubes.engine.gen_enemies(min_x,max_x,min_y,max_y,time,speed,enemies),["SCORE: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$score.cljs$core$IFn$_invoke$arity$1(state)),"\n","FRAME: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$time.cljs$core$IFn$_invoke$arity$1(state)),"\n","SPEED: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$speed.cljs$core$IFn$_invoke$arity$1(state).toFixed((1)))].join('')]);
 } else {
 return new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$ignore_DASH_keypress,quil.core.key_pressed_QMARK_(),cljs.core.cst$kw$screen_DASH_time,(0),cljs.core.cst$kw$stage,"score"], null);
 }
@@ -56,18 +57,18 @@ return new cljs.core.PersistentArrayMap(null, 7, [cljs.core.cst$kw$player,new cl
 })()], 0));
 });
 cubes.stages.update_stage_state = (function cubes$stages$update_stage_state(state){
-var pred__6640 = cljs.core._EQ_;
-var expr__6641 = cljs.core.cst$kw$stage.cljs$core$IFn$_invoke$arity$1(state);
-if(cljs.core.truth_((pred__6640.cljs$core$IFn$_invoke$arity$2 ? pred__6640.cljs$core$IFn$_invoke$arity$2("title",expr__6641) : pred__6640.call(null,"title",expr__6641)))){
+var pred__6668 = cljs.core._EQ_;
+var expr__6669 = cljs.core.cst$kw$stage.cljs$core$IFn$_invoke$arity$1(state);
+if(cljs.core.truth_((pred__6668.cljs$core$IFn$_invoke$arity$2 ? pred__6668.cljs$core$IFn$_invoke$arity$2("title",expr__6669) : pred__6668.call(null,"title",expr__6669)))){
 return cubes.stages.title_stage(state);
 } else {
-if(cljs.core.truth_((pred__6640.cljs$core$IFn$_invoke$arity$2 ? pred__6640.cljs$core$IFn$_invoke$arity$2("game",expr__6641) : pred__6640.call(null,"game",expr__6641)))){
+if(cljs.core.truth_((pred__6668.cljs$core$IFn$_invoke$arity$2 ? pred__6668.cljs$core$IFn$_invoke$arity$2("game",expr__6669) : pred__6668.call(null,"game",expr__6669)))){
 return cubes.stages.game_stage(state);
 } else {
-if(cljs.core.truth_((pred__6640.cljs$core$IFn$_invoke$arity$2 ? pred__6640.cljs$core$IFn$_invoke$arity$2("score",expr__6641) : pred__6640.call(null,"score",expr__6641)))){
+if(cljs.core.truth_((pred__6668.cljs$core$IFn$_invoke$arity$2 ? pred__6668.cljs$core$IFn$_invoke$arity$2("score",expr__6669) : pred__6668.call(null,"score",expr__6669)))){
 return cubes.stages.score_stage(state);
 } else {
-throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(expr__6641)].join('')));
+throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(expr__6669)].join('')));
 }
 }
 }
