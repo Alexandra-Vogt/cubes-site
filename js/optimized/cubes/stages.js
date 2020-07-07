@@ -20,7 +20,7 @@ var player_x = cljs.core.cst$kw$x.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw
 var player_y = cljs.core.cst$kw$y.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$player.cljs$core$IFn$_invoke$arity$1(state));
 var player_speed_x = (cljs.core.cst$kw$speed_DASH_x.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$player.cljs$core$IFn$_invoke$arity$1(state)) + cubes.io.get_x_accel());
 var player_speed_y = (cljs.core.cst$kw$speed_DASH_y.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$player.cljs$core$IFn$_invoke$arity$1(state)) + cubes.io.get_y_accel());
-var player = cubes.engine.update_player(player_speed_x,player_speed_y,player_x,player_y);
+var player = cljs.core.cst$kw$player.cljs$core$IFn$_invoke$arity$1(state);
 var min_x = (- (quil.core.width() / (2)));
 var max_x = ((quil.core.width() / (2)) - (20));
 var min_y = (- (quil.core.height() / (2)));
@@ -31,7 +31,7 @@ var point_cubes = cljs.core.cst$kw$point_DASH_cubes.cljs$core$IFn$_invoke$arity$
 var speed = quil.core.sqrt((quil.core.pow(player_speed_x,(2)) + quil.core.pow(player_speed_y,(2))));
 var distance = cljs.core.cst$kw$distance.cljs$core$IFn$_invoke$arity$1(state);
 if(cubes.engine.player_alive_QMARK_(player,min_x,max_x,min_y,max_y,enemies)){
-return cljs.core.PersistentHashMap.fromArrays([cljs.core.cst$kw$speed,cljs.core.cst$kw$max_DASH_score,cljs.core.cst$kw$time,cljs.core.cst$kw$score,cljs.core.cst$kw$player,cljs.core.cst$kw$point_DASH_cubes,cljs.core.cst$kw$distance,cljs.core.cst$kw$enemies,cljs.core.cst$kw$text],[speed,cljs.core.cst$kw$max_DASH_score.cljs$core$IFn$_invoke$arity$1(state),(time + (1)),cubes.engine.update_score(player,score,point_cubes),player,cubes.engine.gen_point_cubes(player,min_x,max_x,min_y,max_y,point_cubes,speed,time),(distance + speed),cubes.engine.gen_enemies(min_x,max_x,min_y,max_y,time,speed,enemies),["SCORE: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$score.cljs$core$IFn$_invoke$arity$1(state)),"\n","FRAME: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$time.cljs$core$IFn$_invoke$arity$1(state)),"\n","SPEED: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$speed.cljs$core$IFn$_invoke$arity$1(state).toFixed((1)))].join('')]);
+return cljs.core.PersistentHashMap.fromArrays([cljs.core.cst$kw$speed,cljs.core.cst$kw$max_DASH_score,cljs.core.cst$kw$time,cljs.core.cst$kw$score,cljs.core.cst$kw$player,cljs.core.cst$kw$point_DASH_cubes,cljs.core.cst$kw$distance,cljs.core.cst$kw$enemies,cljs.core.cst$kw$text],[speed,cljs.core.cst$kw$max_DASH_score.cljs$core$IFn$_invoke$arity$1(state),(time + (1)),cubes.engine.update_score(player,score,point_cubes),cubes.engine.update_player(player_speed_x,player_speed_y,player_x,player_y),cubes.engine.gen_point_cubes(player,min_x,max_x,min_y,max_y,point_cubes,speed,time),(distance + speed),cubes.engine.gen_enemies(min_x,max_x,min_y,max_y,time,speed,enemies),["SCORE: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$score.cljs$core$IFn$_invoke$arity$1(state)),"\n","FRAME: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$time.cljs$core$IFn$_invoke$arity$1(state)),"\n","SPEED: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$speed.cljs$core$IFn$_invoke$arity$1(state).toFixed((1)))].join('')]);
 } else {
 return new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$ignore_DASH_keypress,quil.core.key_pressed_QMARK_(),cljs.core.cst$kw$screen_DASH_time,(0),cljs.core.cst$kw$stage,"score"], null);
 }
